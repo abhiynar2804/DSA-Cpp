@@ -1,0 +1,29 @@
+// Backtracking implementation in C++
+// String "abc" to find all permutations
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+void permute(string& str, int i, int n) {
+    if (i >= n) {
+        cout << str << endl;
+        return;
+    }
+    for (int j = i; j < n; j++) {
+        //Swap
+        swap(str[i], str[j]);
+        //Rec Call
+        permute(str, i + 1, n);
+        //Backtrack
+        swap(str[i], str[j]);
+    }
+}
+
+int main() {
+    string str = "abc";
+    int i = 0;
+    int n = str.length();
+    permute(str, 0, n);
+    return 0;
+}
